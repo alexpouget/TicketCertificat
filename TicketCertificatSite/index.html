@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="TicketCertificatApp">
+	<head>
+	 <meta charset="utf-8"/>
+	   <title>TicketCertificat</title>
+	   <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+	   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+	   <link href="css/style.css" rel="stylesheet">
+	   <link href="css/mystyle.css" rel="stylesheet">
+	   <link href="css/style-xlarge.css" rel="stylesheet">
+	   <link href="css/font-awesome.min.css" rel="stylesheet">
+	   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+	   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.js"></script>
+	   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.js"></script>
+	   <script src="js/jquery.min.js"></script>
+		<script src="js/script.js"></script>
+		<!-- Controller -->
+		<script src="js/controller/licences.js"></script>
+		<script src="js/controller/connexion.js"></script>
+		<!-- Service-->
+
+	   <script src="js/angular-route.js"></script>
+
+	</head>
+		<body>
+			<h1><center>TicketCertificat<center></h1>
+			
+			<div id ="menu">
+				<nav>
+					<ul>
+					     <li id="acceuil"><a href="#/accueil">Accueil</a></li>
+						 <li id="seConnecter"><a href="#/connexion">Se connecter</a></li>
+						 <li id="entreprise"><a href="#/entreprise">Entreprise</a></li>
+						 <li id="licences"><a href="#/licences">Licences</a></li>
+				   </ul>
+			   </nav>
+			</div>
+			<div id="connectedAs">
+			<label>Connecté en tant que Admin</label>
+			</div>
+			<div ng-view>
+				</div>
+			   
+		</body>
+</html>
