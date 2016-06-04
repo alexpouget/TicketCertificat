@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="TicketCertificatApp">
+	<head>
+	 <meta charset="utf-8"/>
+	   <title>TicketCertificatTemp</title>
+	   <link href="/css/bootstrap/css/bootstrap-theme.css" rel="stylesheet" Content-Type="text/css" type="text/css"/>
+	   <link href="/css/bootstrap/css/bootstrap.css" rel="stylesheet" Content-Type="text/css" type="text/css"/>
+	   <link href="/css/style.css" rel="stylesheet" Content-Type="text/css" type="text/css"/>
+	   <link href="/css/mystyle.css" rel="stylesheet" Content-Type="text/css" type="text/css"/>
+	   <link href="/css/style-xlarge.css" rel="stylesheet" Content-Type="text/css" type="text/css"/>
+	   <link href="/css/font-awesome.min.css" rel="stylesheet" Content-Type="text/css" type="text/css"/>
+	   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+	   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-resource.js"></script>
+	   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.js"></script>
+	   <script src="/js/jquery.min.js" type="text/javascript"></script>
+		<script src="/js/script.js" type="text/javascript"></script>
+        <script src="/js/angular-route.js" type="text/javascript"></script>
+		<!-- Controller -->
+		<script src="/js/controller/licences.js" type="text/javascript"></script>
+		<script src="/js/controller/connexion.js" type="text/javascript"></script>
+		<!-- Service-->
+        <script src="/js/service/userService.js" type="text/javascript"></script>
+        <script src="/js/service/connexionService.js" type="text/javascript"></script>
+
+
+     </head>
+         <body ng-controller="homeCtrl">
+             <h1><center>TicketCertificat</center></h1>
+
+             <div ng-controller="connexion" id ="menu">
+                 <nav>
+                     <ul>
+                          <li class="active" id="acceuil"><a href="#/accueil">Accueil</a></li>
+                          <li id="seConnecter"><a href="#/connexion">Se connecter</a></li>
+                          <li id="entreprise"><a href="#/entreprise">Entreprise</a></li>
+                          <li id="licences"><a href="#/licences">Licences</a></li>
+                         <li ng-show="authenticated" id="seDeconnecter"><a href="" ng-click="connexion.logout()">Se Deconnecter</a></li>
+                    </ul>
+                </nav>
+             </div>
+             <div id="connectedAs">
+             <label>Connecté en tant que {{session.content}}</label>
+             </div>
+             <div class="ng-view">
+                 </div>
+
+         </body>
+ </html>
