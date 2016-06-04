@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="TicketCertificat" />
+        <module name="pom" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TicketCertificat" target="1.8" />
+      <module name="pom" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

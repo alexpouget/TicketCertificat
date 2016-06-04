@@ -38,6 +38,10 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
             templateUrl: 'views/licences.html',
 			controller: 'licences'
         })
+            .when('/utilisateurs', {
+                templateUrl: 'views/utilisateurs.html',
+                controller: 'utilisateurs'
+            })
 		 .otherwise({
              templateUrl: 'views/accueil.html',
              controller: 'homeCtrl'

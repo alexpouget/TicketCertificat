@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+
+    </script>
+</head>
+<body>
+
+<div id="utilisateurs" class="contenu">
+    <h2> Gestion des Utilisateurs </h2>
+    <div id="tabGestionUsers">
+        <table border="1px" id="tabUtilisateurs" class="tableau">
+            <tr>
+                <th>UID</th>
+                <th>Rôle</th>
+                <th> </th>
+                <th> </th>
+            </tr>
+            <tr>
+                <td>997244</td>
+                <td>Administrateur</td>
+                <td><input type="button" id="Modifier" value="Modifier"/></td>
+                <td><input type="checkbox" id="cbdeleteUser"/></td>
+            </tr>
+            <tr>
+                <td>543532</td>
+                <td>Administrateur Systeme</td>
+                <td><input type="button" id="Modifier" value="Modifier"/></td>
+                <td><input type="checkbox" id="cbdeleteUser"/></td>
+            </tr>
+            <tr>
+                <td>124134</td>
+                <td>Gestionnaire Licence</td>
+                <td><input type="button" id="Modifier" value="Modifier"/></td>
+                <td><input type="checkbox" id="cbdeleteUser"/></td>
+            </tr>
+        </table>
+        <input type="button" id="deleteUser" value="Supprimer" disabled="true">
+    </div>
+    <div id="formModifierUser" style="display:none;">
+        <h3> Modifier l'utilisateur</h3>
+        <label for="userName">Nom : </label>
+        <input type ="text" id="userName" name="userName"><br>
+        <label for="userRole">Rôle : </label>
+        <input type ="text" id="userRole" name="userRole"><br>
+        <input type="button" id="modifierUser" value="Enregistrer modification">
+    </div>
+</div>
+</body>
+</html>
