@@ -3,6 +3,7 @@ package com.esgi.service;
 import com.esgi.entity.User;
 import com.esgi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import javax.jws.soap.SOAPBinding;
@@ -31,7 +32,7 @@ public class UserServiceImplementation implements UserService {
     public User newUser(User user) {
         User user1 = new User();
         user1.setUid(user.getUid());
-        user1.setPassword(user.getPassword());
+        user1.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         user1.setEmail(user.getEmail());
         return userRepository.save(user1);
     }
@@ -41,7 +42,7 @@ public class UserServiceImplementation implements UserService {
         User user1 = new User();
         user1.setId(user.getId());
         user1.setUid(user.getUid());
-        user1.setPassword(user.getPassword());
+        user1.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         user1.setEmail(user.getEmail());
         return userRepository.save(user1);
     }

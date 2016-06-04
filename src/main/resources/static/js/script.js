@@ -151,7 +151,7 @@ TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope',
 
 
     $scope.logout = function(){
-        $rootScope.$broadcast('event:logoutRequest');
+        $rootScope.$emit('event:logoutRequest');
     }
     }
 ]);
