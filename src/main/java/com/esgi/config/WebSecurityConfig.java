@@ -18,43 +18,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AppUserDetailsService appUserDetailsService;
 
+    @Autowired
+    private MyEntryPoint myEntryPoint;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.httpBasic();
-
+        http.exceptionHandling().authenticationEntryPoint(myEntryPoint);
         http.authorizeRequests()
                 .antMatchers("/css/**", "/js/**", "/images/**", "/favicon.ico", "/static/**").permitAll()
                 .antMatchers("/","/views/connexion.html")
                 .permitAll()
                 .anyRequest().authenticated();
-        /*http
-                .formLogin()
-                .loginPage("/connexion")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
 
-        http
-                .authorizeRequests()
-                .antMatchers("/api/ping")
-                .permitAll()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/api/**")
-                .authenticated()
-                .and()
-                .authorizeRequests()
-                .anyRequest()
-                .permitAll()
-                .and()
 
-                .httpBasic()
-                .and()
-                .csrf()
-                .disable();*/
 
 
     }
