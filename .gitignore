@@ -20,6 +20,8 @@ hs_err_pid*
 .idea/dictionaries
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
+.idea/misc.xml
+.idea/*
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
@@ -63,4 +65,4 @@ fabric.properties
 target/**
 
 #ApplicationProperties
-application.properties
+src/main/resources/application.properties
