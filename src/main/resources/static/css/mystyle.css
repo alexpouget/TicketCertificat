@@ -214,3 +214,31 @@ li:last-child a:hover{
 h3{
     color: black;
 }
+
+#formaddUser input[name="uid"]{
+    margin-left: 54px;
+}
+
+
+#formaddUser input[name="email"]{
+    margin-left: 37px;
+}
+
+#formaddUser input[name="password"]{
+    height: 32px;
+    width: 180px;
+}
+
+#formModifierUser input[name="uid"]{
+    margin-left: 61px;
+}
+
+
+#formModifierUser input[name="email"]{
+    margin-left: 45px;
+}
+
+#formModifierUser input[name="password"]{
+    height: 32px;
+    width: 180px;
+}
