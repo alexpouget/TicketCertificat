@@ -34,6 +34,10 @@ ul li{
 
 }
 
+#formaddUser label{
+    display: inline-block;
+}
+
 /* Change the link color on hover */
 li a:hover {
     background-color: #555;
@@ -49,6 +53,7 @@ li:first-child a:hover{
     width:500px;
     height:330px;
     margin-top:100px;
+    margin-left:150px;
     background-color:#48737c;
     border-radius:3px;
     box-shadow:0px 0px 10px 0px #424242;
@@ -134,9 +139,7 @@ li:last-child a:hover{
 }
 
 .tableau input{
-    width: 153px;
     text-align: center;
-    padding-right: 139px;
     height: 44px;
 }
 
@@ -190,11 +193,14 @@ li:last-child a:hover{
 }
 
 #connectedAs{
-    margin-left: 1740px;
+    float: right;
     margin-top: -100px;
     background: #f1f1f1;
     width: 245px;
-    border-radius: 3px;#f1f1f1
+    border-radius: 3px;#f1f1f1;
+    text-align: center;
+    margin-right: 10px;
+    height: 30px;
 }
 
 #formModifierUser label{

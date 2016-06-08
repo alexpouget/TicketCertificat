@@ -31,17 +31,26 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 templateUrl: 'views/accueil.html',
                 controller: 'homeCtrl'
             })
-		 .when('/entreprise', {
+		    .when('/entreprise', {
             templateUrl: 'views/entreprise.html'
-        })
-		 .when('/licences', {
+            })
+		    .when('/licences', {
             templateUrl: 'views/licences.html',
 			controller: 'licences'
-        })
+            })
+            .when('/utilisateurs/modifier/:id', {
+            templateUrl: 'views/modifierUtilisateur.html',
+            controller: 'modifierUtilisateurs'
+            })
+            .when('/utilisateurs/ajouter', {
+                templateUrl: 'views/ajouterUtilisateur.html',
+                controller: 'ajouterUtilisateurs'
+            })
             .when('/utilisateurs', {
                 templateUrl: 'views/utilisateurs.html',
                 controller: 'utilisateurs'
             })
+
 		 .otherwise({
              templateUrl: 'views/accueil.html',
              controller: 'homeCtrl'

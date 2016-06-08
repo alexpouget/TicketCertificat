@@ -50,12 +50,8 @@ public class UserController {
         return userService.findByUid(uid);
     }
 
-    @RequestMapping(value="/api/user/connexion/{uid}",method = RequestMethod.GET)
-    public User Connexion(@PathVariable String uid){
-        return userService.findByUid(uid);
-    }
 
-    @RequestMapping(value="/api/user",method = RequestMethod.POST)
+    @RequestMapping(value="/api/user/{uid}",method = RequestMethod.POST)
     public User addUsers(@RequestBody User user){
         return userService.newUser(user);
     }
