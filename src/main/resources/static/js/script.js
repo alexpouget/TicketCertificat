@@ -46,6 +46,10 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 templateUrl: 'views/ajouterUtilisateur.html',
                 controller: 'ajouterUtilisateurs'
             })
+            .when('/utilisateurs/droit/:id', {
+                templateUrl: 'views/droitUtilisateur.html',
+                controller: 'droitUtilisateurs'
+            })
             .when('/utilisateurs', {
                 templateUrl: 'views/utilisateurs.html',
                 controller: 'utilisateurs'
@@ -158,9 +162,10 @@ TicketCertificatApp.run(function ($rootScope, $http, $route, $location) {
 // Contrôleur de la page d'accueil
 TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope',
     function($scope,$rootScope){
-        $scope.message = "Bienvenue sur la page d'accueil";
-        $scope.session = {id: 'xxx', content : 'user'}
 
+        $scope.session = $rootScope.user;
+        console.log("$scope.session");
+        console.log($scope.session);
 
 
     $scope.logout = function(){

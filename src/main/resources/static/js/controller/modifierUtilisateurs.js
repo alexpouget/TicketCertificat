@@ -10,16 +10,13 @@ TicketCertificatApp.controller('modifierUtilisateurs', ['$scope','User','$locati
         $scope.password = "";
         $scope.uid = "";
         $scope.email = "";
-        var uid = $routeParams.uid;
-        $scope.user = User.query({uid:uid}, function (data) {
+        var uid = $routeParams.id;
+        $scope.user = User.get({uid:uid}, function (data) {
             console.log(data);
             $scope.password = data.password;
             $scope.uid = data.uid;
             $scope.email = data.email;
         });
-
-
-
 
         $scope.valModifier = function () {
             var u = new User();

@@ -1,56 +1,3 @@
-<!--<div id="utilisateurs" class="contenu">
-   <h2> Gestion des Utilisateurs </h2>
-   <div id="tabGestionUsers">
-       <table border="1px" id="tabUtilisateurs" class="tableau">
-           <tr>
-               <th>UID</th>
-               <th>Email</th>
-               <th> </th>
-               <th> </th>
-           </tr>
-           <!--
-           ng-click="modifier(user.id)"
-           ng-click="addToDelete(user.id)"
-
-            ng-click="delete()"
-            <input type="button" id="addU" value="addU">
-             ng-click="update()"
-           -->
-<!--  <tr ng-repeat="user in users">
-     <td>{{user.uid}}</td>
-     <td>{{user.email}}</td>
-     <td><input type="button" id="Modifier" value="Modifier" /></td>
-     <td><input type="checkbox" id="cbdeleteUser" /></td>
- </tr>
-</table>
-<input type="button" id="deleteUser" value="Supprimer" disabled="true">
-
-</div>
-<div id="formModifierUser" style="display:none;">
-<h3> Modifier l'utilisateur</h3>
-<label for="uid">Uid : </label>
-<input type ="text" id="uid" name="uid" ng-model="uid"><br>
-<label for="email">Email : </label>
-<input type ="text" id="email" name="email" ng-model="email"><br>
-<label for="userRole">Rôle : </label>
-<input type ="text" id="userRole" name="userRole"><br>
-<input type="button" id="modifierUser" value="Enregistrer modification">
-</div>
-<!--<div id="formaddUser" style="display:none;">
-<h3> Modifier l'utilisateur</h3>
-<label for="uid">Uid : </label>
-<input type ="text" id="newUid" name="uid" ng-model="newUid"><br>
-<label for="email">Email : </label>
-<input type ="text" id="newEmail" name="email" ng-model="newEmail"><br>
-<label for="password">Email : </label>
-<input type ="text" id="password" name="password" ng-model="newPassword"><br>
-<label for="userRole">Rôle : </label>
-<input type ="text" id="userRole" name="userRole"><br>
-<input type="button" id="addUser" value="Enregistrer modification" ng-click="add()">
-</div>
-</div>-->
-
-
 <div id="utilisateurs" class="contenu">
     <h2> Gestion des Utilisateurs </h2>
     <div id="tabGestionUsers">
@@ -58,17 +5,20 @@
             <tr>
                 <th>UID</th>
                 <th>Email</th>
+                <th>Droit </th>
                 <th> </th>
                 <th> </th>
+
             </tr>
             <tr ng-repeat="user in users">
                  <td>{{user.uid}}</td>
                  <td>{{user.email}}</td>
+                <td><input type="button" value="gerer" ng-click="droit(user)"/></td>
                  <td><input type="button" value="modifier" ng-click="modifier(user)"/></td>
                  <td><input type="checkbox" ng-click="addToDelete(user)" /></td>
              </tr>
         </table>
-        <input type="button" value="Supprimer" ng-active="couldDelete">
+        <input type="button" value="Supprimer" ng-active="couldDelete" ng-click="delete()">
         <input type="button" value="Ajouter" ng-click="activeAdd()">
     </div>
 
