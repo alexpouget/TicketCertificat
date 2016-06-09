@@ -20,12 +20,9 @@ public class RoleController {
 
     @Autowired
     RoleService roleService;
-    @Autowired
-    AppUserDetailsService appUserDetailsService;
-
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Role> getRole(){
+    public List<Role> getAllRole(){
         return roleService.findAllRole();
     }
 
@@ -33,12 +30,7 @@ public class RoleController {
     public Role getRole(@PathVariable int id){
         return roleService.findOneRole(id);
     }
-/*
-    @RequestMapping(method = RequestMethod.GET, value="/api/userRole"+"/role/{id}")
-    public List<UserRole> getUserRoleByRole(@PathVariable int id){
-        return userService.findOneUserRoleByRole(id);
-    }
-*/
+
     @RequestMapping(method = RequestMethod.POST)
     public Role addRole(@RequestBody Role role){
         return roleService.newRole(role);
