@@ -13,7 +13,17 @@ TicketCertificatApp.controller('utilisateurs', ['$scope','User','$location','$ro
 
         $scope.addToDelete = function(u){
 
-            $scope.userToDelete.push(u);
+            if(userToDelete==null || !userToDelete.contains(u)) {
+                $scope.userToDelete.push(u);
+            }else{
+                $scope.userToDelete.filter(removeToDelete,u);
+                console.log($scope.userToDelete);
+            }
+        }
+
+        function removeToDelete(element,element2) {
+            console.log(element2);
+            return element != element2;
         }
 
         $scope.delete = function(){

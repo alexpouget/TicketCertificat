@@ -162,10 +162,22 @@ TicketCertificatApp.run(function ($rootScope, $http, $route, $location) {
 // Contrôleur de la page d'accueil
 TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope',
     function($scope,$rootScope){
-
-        $scope.session = $rootScope.user;
+        $scope.admin = false;
+        $scope.session = {};
         console.log("$scope.session");
         console.log($scope.session);
+
+        $rootScope.$on('event:loginConfirmed', function () {
+            $scope.session = $rootScope.user;
+            for(var u in $scope.session.authorities) {
+                console.log("role : "+$scope.session.authorities[u].authority);
+                if($scope.session.authorities[u].authority=="admin"){
+                    $scope.admin = true;
+                }
+            }
+        });
+
+
 
 
     $scope.logout = function(){
@@ -173,17 +185,3 @@ TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope',
     }
     }
 ]);
-
-// Fonction permettant l'échange de données entre deux controlleurs
-TicketCertificatApp.factory('dataShare',function($rootScope){
-  var service = {};
-  service.data = false;
-  service.sendData = function(data){
-      this.data = data;
-      $rootScope.$broadcast('data_shared');
-  };
-  service.getData = function(){
-    return this.data;
-  };
-  return service;
-});

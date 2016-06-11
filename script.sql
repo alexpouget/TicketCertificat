@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Jeu 05 Mai 2016 à 23:17
+-- Généré le :  Sam 11 Juin 2016 à 10:50
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -34,7 +34,7 @@ CREATE TABLE `company` (
 
 CREATE TABLE `computer` (
   `id` int(11) NOT NULL,
-  `id_computer` int(11) DEFAULT NULL,
+  `name` varchar(256) DEFAULT NULL,
   `id_company` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -74,7 +74,16 @@ CREATE TABLE `license_owner` (
 CREATE TABLE `role` (
   `id` int(11) NOT NULL,
   `name` varchar(256) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'admin'),
+(2, 'comptable'),
+(3, 'user');
 
 -- --------------------------------------------------------
 
@@ -109,7 +118,14 @@ CREATE TABLE `user` (
   `uid` varchar(256) DEFAULT NULL,
   `email` varchar(256) DEFAULT NULL,
   `password` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `user`
+--
+
+INSERT INTO `user` (`id`, `uid`, `email`, `password`) VALUES
+(1, '997244', 'pouget@gmail.com', '$2a$04$16/UikoINtqcBCdvyZN6tebTeabJC9VHipGvZ8Fi8HCRVy9VeBlFO'),
 
 -- --------------------------------------------------------
 
@@ -121,7 +137,15 @@ CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_role` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `id_user`, `id_role`) VALUES
+(1, 1, 1),
+(7, 6, 3);
 
 --
 -- Index pour les tables exportées
@@ -217,7 +241,7 @@ ALTER TABLE `license_owner`
 -- AUTO_INCREMENT pour la table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `software`
 --
@@ -232,12 +256,12 @@ ALTER TABLE `type_license`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Contraintes pour les tables exportées
 --
@@ -252,15 +276,15 @@ ALTER TABLE `computer`
 -- Contraintes pour la table `license`
 --
 ALTER TABLE `license`
-  ADD CONSTRAINT `fk_license_type` FOREIGN KEY (`type_license`) REFERENCES `type_license` (`id`),
-  ADD CONSTRAINT `fk_license_software` FOREIGN KEY (`id_software`) REFERENCES `software` (`id`);
+  ADD CONSTRAINT `fk_license_software` FOREIGN KEY (`id_software`) REFERENCES `software` (`id`),
+  ADD CONSTRAINT `fk_license_type` FOREIGN KEY (`type_license`) REFERENCES `type_license` (`id`);
 
 --
 -- Contraintes pour la table `license_owner`
 --
 ALTER TABLE `license_owner`
-  ADD CONSTRAINT `fk_license_owner_company` FOREIGN KEY (`id_company`) REFERENCES `company` (`id`),
   ADD CONSTRAINT `fk_license_owner` FOREIGN KEY (`id_license`) REFERENCES `license` (`id`),
+  ADD CONSTRAINT `fk_license_owner_company` FOREIGN KEY (`id_company`) REFERENCES `company` (`id`),
   ADD CONSTRAINT `fk_license_owner_computer` FOREIGN KEY (`id_computer`) REFERENCES `computer` (`id`);
 
 --

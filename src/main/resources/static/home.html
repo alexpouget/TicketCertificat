@@ -40,7 +40,7 @@
                           <li ng-show="!authenticated"id="seConnecter"><a href="#/connexion">Se connecter</a></li>
                           <li id="entreprise"><a href="#/entreprise">Entreprise</a></li>
                           <li id="licences"><a href="#/licences">Licences</a></li>
-                         <li id="utilisateurs"><a href="#/utilisateurs">Utilisateurs</a></li>
+                         <li ng-show="admin" id="utilisateurs"><a href="#/utilisateurs">Utilisateurs</a></li>
                          <li ng-show="authenticated" id="seDeconnecter"><a href="" ng-click="logout()">Se Deconnecter</a></li>
                     </ul>
                 </nav>
