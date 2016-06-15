@@ -32,11 +32,52 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 controller: 'homeCtrl'
             })
 		    .when('/entreprise', {
-            templateUrl: 'views/entreprise.html'
+            templateUrl: 'views/entreprise.html',
+            controller: 'entreprise'
+            })
+            .when('/entreprise/modifier/:id', {
+                templateUrl: 'views/modifierEntreprise.html',
+                controller: 'modifierEntreprise'
+            })
+            .when('/entreprise/ajouter', {
+                templateUrl: 'views/ajouterEntreprise.html',
+                controller: 'ajouterEntreprise'
+            })
+            .when('/computer', {
+                templateUrl: 'views/computer.html',
+                controller: 'computer'
+            })
+            .when('/computer/modifier/:id', {
+                templateUrl: 'views/modifierComputer.html',
+                controller: 'modifierComputer'
+            })
+            .when('/computer/ajouter', {
+                templateUrl: 'views/ajouterComputer.html',
+                controller: 'ajouterComputer'
+            })
+            .when('/software', {
+                templateUrl: 'views/software.html',
+                controller: 'software'
+            })
+            .when('/software/modifier/:id', {
+                templateUrl: 'views/modifierSoftware.html',
+                controller: 'modifierSoftware'
+            })
+            .when('/software/ajouter', {
+                templateUrl: 'views/ajouterSoftware.html',
+                controller: 'ajouterSoftware'
             })
 		    .when('/licences', {
             templateUrl: 'views/licences.html',
 			controller: 'licences'
+            })
+            .when('/licences/ajouter', {
+                templateUrl: 'views/ajouterLicences.html',
+                controller: 'ajouterLicenses'
+            })
+            .when('/licences/:id', {
+                templateUrl: 'views/licences.html',
+                controller: 'licences'
             })
             .when('/utilisateurs/modifier/:id', {
             templateUrl: 'views/modifierUtilisateur.html',
@@ -50,6 +91,7 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 templateUrl: 'views/droitUtilisateur.html',
                 controller: 'droitUtilisateurs'
             })
+
             .when('/utilisateurs', {
                 templateUrl: 'views/utilisateurs.html',
                 controller: 'utilisateurs'
@@ -160,9 +202,11 @@ TicketCertificatApp.run(function ($rootScope, $http, $route, $location) {
 
 
 // Contrôleur de la page d'accueil
-TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope',
-    function($scope,$rootScope){
+TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope','$location',
+    function($scope,$rootScope,$location){
         $scope.admin = false;
+        $scope.comptable = false;
+        $scope.user = false;
         $scope.session = {};
         console.log("$scope.session");
         console.log($scope.session);
@@ -174,9 +218,18 @@ TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope',
                 if($scope.session.authorities[u].authority=="admin"){
                     $scope.admin = true;
                 }
+                if($scope.session.authorities[u].authority=="comptable"){
+                    $scope.comptable = true;
+                }
+                if($scope.session.authorities[u].authority=="user"){
+                    $scope.user = true;
+                }
             }
         });
 
+        $scope.goLicences = function(){
+            $location.path("/licences/"+$scope.session.user.id);
+        }
 
 
 

@@ -3,11 +3,7 @@
     <div id="formModifierUser">
         <h3> Modifier l'utilisateur</h3>
         <label >Uid : </label>
-        <input type ="text" name="uid" ng-model="uid" value="user.uid"><br>
-        <label >Email : </label>
-        <input type ="text" name="email" ng-model="email" value="user.email"><br>
-        <label >Password : </label>
-        <input type ="password" name="password" ng-model="password"><br>
+        <input type ="text" name="name" ng-model="computer.name" value="computer.name"><br>
         <select ng-options="company as company.name for company in companys track by company.id" ng-model="selected"></select><br>
 
         <input type="button" value="Enregistrer modification" ng-click="valModifier()">

@@ -1,0 +1,23 @@
+<div id="utilisateurs" class="contenu">
+    <h2> Gestion des Utilisateurs </h2>
+    <div id="tabGestionComputer">
+        <table border="1px" id="tabComputer" class="tableau">
+            <tr>
+                <th>Name</th>
+                <th>Company </th>
+                <th> </th>
+                <th> </th>
+
+            </tr>
+            <tr ng-repeat="computer in computers">
+                 <td>{{computer.name}}</td>
+                 <td>{{computer.company.name}}</td>
+                 <td><input type="button" value="modifier" ng-click="modifier(computer)"/></td>
+                 <td><input type="checkbox" ng-click="addToDelete(computer)" /></td>
+             </tr>
+        </table>
+        <input type="button" value="Supprimer" ng-active="couldDelete" ng-click="delete()">
+        <input type="button" value="Ajouter" ng-click="activeAdd()">
+    </div>
+
+</div>

@@ -14,10 +14,11 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String uid, String password, String email) {
+    public User(String uid, String password, String email, Company company) {
         this.uid = uid;
         this.password = password;
         this.email = email;
+        this.company = company;
     }
 
     public String getUid() {
@@ -53,6 +54,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -66,5 +75,9 @@ public class User implements Serializable {
 
     @Column(name = "email")
     private String email;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name = "id_company")
+    private Company company;
 
 }

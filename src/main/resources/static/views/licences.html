@@ -1,52 +1,30 @@
-<!DOCTYPE html>
-<html>
-	<body>
-		<div id="licences" class ="contenu">
-		<h2>Gestion des licences</h2>
-			<table border="1px" id="tabLicences" class="tableau">
-				<tr>
-					<th>Nom</th>
-					<th>Type</th>
-					<th>Date d'expiration</th>
-					<th> </th>
-				</tr>
-				<tr>
-					<td>Microsoft Office</td>
-					<td>Bureautique</td>
-					<td>15-11-2017</td>
-					<td><input type="button" id="renouvellerLicence" value="Renouveller"/></td>
-				</tr>
-				<tr>
-					<td>Visual Studio</td>
-					<td>Developpement</td>
-					<td>15-11-201</td>
-					<td><input type="button" id="renouvellerLicence" value="Renouveller"/></td>
-				</tr>
-				<tr>
-					<td>Access</td>
-					<td>Base de données</td>
-					<td>15-11-2017</td>
-					<td><input type="button" id="renouvellerLicence" value="Renouveller"/></td>
-				</tr>
-			</table>
-			<input type="button" id="ajouterLicence" value="Ajouter Licence">
-			<div id="ajoutLicence" style="display:none;">
-				<label>Selectionner la licence : </label>
-				<select id="selectLicence">
-					  <option value="office">Microsoft Office</option>
-					  <option value="access">Access</option>
-					  <option value="vs">Visual Studio</option>
-					  <option value="msp">Microsoft Project</option>
-				</select><br>
-				<label>Selectionner le poste : </label>
-				<select  id="selectComputer">
-					  <option value="pc1">PC-01-200</option>
-					  <option value="pc2">PC-01-201<</option>
-					  <option value="pc3">PC-01-202<</option>
-					  <option value="pc4">PC-01-203</option>
-				</select><br>
-				<input type="button" id="ajouterLicenceInDiv" value="Ajouter">
-			</div>
-		</div>
-	</body>
-</html>
+<div id="licences" class ="contenu">
+<h2>Gestion des licences</h2>
+
+	<label>Selectionner l'entreprise : </label>
+	<select  ng-change="doFilterCompany()" ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected">
+		<option value="">choisissez une entreprise</option>
+	</select><br>
+	<label>Ordinateur : </label>
+	<input type ="text" name="computer" ng-model="computer" ng-change="doFilterComputer()"><br>
+	<!--<input type="button" value="Filtrer" ng-click="filterComputer()">-->
+	<table border="1px" id="tabLicences" class="tableau">
+		<tr>
+			<th>Type</th>
+			<th>Date d'expiration</th>
+			<th>Computer</th>
+			<th>Company</th>
+			<th>Software Name</th>
+			<th> </th>
+		</tr>
+		<tr ng-repeat="licence in licences">
+			<td>{{licence.license.typeLicense.type}}</td>
+			<td>{{licence.dateExpiration}}</td>
+			<td>{{licence.computer.name}}</td>
+			<td>{{licence.company.name}}</td>
+			<td>{{licence.license.software.name}}</td>
+			<td><input type="button" id="renouvellerLicence" value="Renouveller"/></td>
+		</tr>
+	</table>
+	<input ng-show="admin" type="button" id="ajouterLicence" value="Ajouter Licence" ng-click="activeAdd()">
+</div>

@@ -15,7 +15,7 @@ public class LicenseOwner implements Serializable {
     public LicenseOwner() {
     }
 
-    public LicenseOwner(Date dateDebut, Date dateExpiration, Computer computer, Company company, License license) {
+    public LicenseOwner(String dateDebut, String dateExpiration, Computer computer, Company company, License license) {
         this.dateDebut = dateDebut;
         this.dateExpiration = dateExpiration;
         this.computer = computer;
@@ -31,19 +31,19 @@ public class LicenseOwner implements Serializable {
         this.id = id;
     }
 
-    public Date getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateExpiration() {
+    public String getDateExpiration() {
         return dateExpiration;
     }
 
-    public void setDateExpiration(Date dateExpiration) {
+    public void setDateExpiration(String dateExpiration) {
         this.dateExpiration = dateExpiration;
     }
 
@@ -77,10 +77,10 @@ public class LicenseOwner implements Serializable {
     private int id;
 
     @Column(name = "date_debut")
-    private Date dateDebut;
+    private String dateDebut;
 
     @Column(name = "date_expiration")
-    private Date dateExpiration;
+    private String dateExpiration;
 
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_computer")

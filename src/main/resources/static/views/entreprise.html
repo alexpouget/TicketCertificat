@@ -1,38 +1,20 @@
-<!DOCTYPE html>
-<html>
-	<body>
-		<div id="entreprise" class ="contenu">
-		<h2>Gestion des entreprises</h2>
-			<table border="1px" id="tabEntreprises" class="tableau">
-				<tr>
-					<th>Entreprise</th>
-					<th>Adresse</th>
-					<th>Reponsable</th>
-					<th>Téléphone</th>
-					<th> </th>
-				</tr>
-				<tr>
-					<td>Babar Music</td>
-					<td>8 rue du Swegg</td>
-					<td>Babar</td>
-					<td>012737774838</td>
-					<td><input type="button" id="entrepriseGererLicence" value="Gérer Licences"/></td>
-				</tr>
-				<tr>
-					<td>Michax Record</td>
-					<td>9 rue de la meche</td>
-					<td>benji</td>
-					<td>012737774838</td>
-					<td><input type="button" id="entrepriseGererLicence" value="Gérer Licences"/></td>
-				</tr>
-				<tr>
-					<td>Pougaxeux Recordeu</td>
-					<td>9 rue du Bvb</td>
-					<td>Pougaxeux</td>
-					<td>012737774838</td>
-					<td><input type="button" id="entrepriseGererLicence" value="Gérer Licences"/></td>
-				</tr>
-			</table>
-		</div>
-	</body>
-</html>
+
+<div id="entreprise" class ="contenu">
+<h2>Gestion des entreprises</h2>
+	<table border="1px" id="tabEntreprises" class="tableau">
+		<tr>
+			<th>Entreprise</th>
+			<th>Adresse</th>
+			<th> </th>
+			<th> </th>
+		</tr>
+		<tr ng-repeat="entreprise in entreprises">
+			<td>{{entreprise.name}}</td>
+			<td>{{entreprise.adress}}</td>
+			<td><input type="button" value="modifier" ng-click="modifier(entreprise)"/></td>
+			<td><input type="checkbox" ng-click="addToDelete(entreprise)" /></td>
+		</tr>
+	</table>
+	<input type="button" value="Supprimer" ng-active="couldDelete" ng-click="delete()">
+	<input type="button" value="Ajouter" ng-click="activeAdd()">
+</div>

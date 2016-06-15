@@ -1,0 +1,18 @@
+<div id="Licenses" class="contenu">
+    <h2> Gestion des Licences </h2>
+    <div id="formaddUser">
+        <h3> Ajouter licences</h3>
+        <label >Date expiration </label>
+        <input type="datetime-local" name="bdaytime" ng-model="newDate">
+        <label >Company</label>
+        <select ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected"></select><br>
+        <label >Computer</label>
+        <select ng-options="computer as computer.name for computer in computers track by computer.id" ng-model="computerSelected"></select><br>
+        <label >Type licence</label>
+        <select ng-options="type as type.type for type in types track by type.id" ng-model="typeSelected"></select><br>
+        <label >Software</label>
+        <select ng-options="software as software.name for software in softwares track by software.id" ng-model="softwareSelected"></select><br>
+
+        <input type="button" id="addUser" value="Enregistrer ajout" ng-click="add()">
+    </div>
+</div>

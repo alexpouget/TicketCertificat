@@ -41,7 +41,9 @@ public class UserServiceImplementation implements UserService {
         user1.setUid(user.getUid());
         user1.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         user1.setEmail(user.getEmail());
+        user1.setCompany(user.getCompany());
         user1 = userRepository.save(user1);
+        //par default user
         UserRole userRole = new UserRole();
         userRole.setUser(user1);
         userRole.setRole(roleRepository.findRoleByName("user"));
@@ -56,6 +58,7 @@ public class UserServiceImplementation implements UserService {
         user1.setUid(user.getUid());
         user1.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
         user1.setEmail(user.getEmail());
+        user1.setCompany(user.getCompany());
         user1 = userRepository.save(user1);
         return user1;
     }
