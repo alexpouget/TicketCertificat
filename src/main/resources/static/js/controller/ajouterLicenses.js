@@ -13,7 +13,7 @@ TicketCertificatApp.controller('ajouterLicenses', ['$scope','$location','Company
         $scope.types = Typelicenses.query();
         $scope.result = null;
 
-        function find(softwareSelected, typeSelected) {
+        /*function find(softwareSelected, typeSelected) {
             $scope.result = null;
             $scope.licences = Licences.query(function(data){
                 console.log("merdier");
@@ -21,9 +21,9 @@ TicketCertificatApp.controller('ajouterLicenses', ['$scope','$location','Company
                 for(var d in data) {
                     console.log("merde");
                     console.log(JSON.stringify(data[d]));
-                    if(data[d].software != null &&  data[d].software.name==softwareSelected.name){
+                    if(data[d].software != null &&  data[d].software.id==softwareSelected.id){
                         console.log("passe1");
-                        if(data[d].typeLicense.type==typeSelected.type){
+                        if(data[d].typeLicense.id==typeSelected.id){
                             console.log("passe2");
                             $scope.result = data[d];
                             console.log($scope.result);
@@ -31,37 +31,51 @@ TicketCertificatApp.controller('ajouterLicenses', ['$scope','$location','Company
                     }
                 }
             });
-        }
+        }*/
 
         function create(softwareSelected, typeSelected) {
             console.log("create");
-            var l = new Licences();
-            l.software = softwareSelected;
-            l.typeLicense = typeSelected;
-            l.$save(function (data) {
-                $scope.result = data;
-            });
+
             return $scope.result;
         }
 
         $scope.add = function(){
-            var l = new LicencesOwner();
-            l.dateDebut = new Date().toLocaleString();
-            l.dateExpiration = $scope.newDate;
-            l.company = $scope.companySelected;
-            l.computer = $scope.computerSelected;
-            find($scope.softwareSelected,$scope.typeSelected);
-            if($scope.result==null){
-                create($scope.softwareSelected,$scope.typeSelected);
-            }
-            l.license = $scope.result;
-            console.log("new L");
-            console.log(JSON.stringify(l));
-            if(l.license!=null) {
-                l.$save(function () {
-                    $location.path("/licenses");
-                });
-            }
+            $scope.l = new LicencesOwner();
+            var now = new Date();
+            $scope.l.dateDebut = now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay();
+
+            $scope.l.dateExpiration = $scope.newDate.getFullYear()+"-"+$scope.newDate.getMonth()+"-"+$scope.newDate.getDay();;
+            $scope.l.company = $scope.companySelected;
+            $scope.l.computer = $scope.computerSelected;
+            Licences.get({id:$scope.softwareSelected.id,type:$scope.typeSelected.id},function(data){
+                $scope.result = data;
+                console.log(JSON.stringify($scope.result));
+                console.log($scope.result.id);
+                if($scope.result.id==undefined || $scope.result.id==null){
+                    console.log("create");
+                    var l = new Licences();
+                    l.software = $scope.softwareSelected;
+                    l.typeLicense = $scope.typeSelected;
+                    l.$save(function (data) {
+                        $scope.result = data;
+                        $scope.l.license = $scope.result;
+                        console.log("new L");
+                        console.log(JSON.stringify($scope.l));
+                        $scope.l.$save(function () {
+                            $location.path("/licenses");
+                        });
+                    });
+                }else{
+                    $scope.l.license = $scope.result;
+                    console.log("new L");
+                    console.log(JSON.stringify($scope.l));
+                    $scope.l.$save(function () {
+                        $location.path("/licenses");
+                    });
+
+                }
+            });
+
 
         }
     }

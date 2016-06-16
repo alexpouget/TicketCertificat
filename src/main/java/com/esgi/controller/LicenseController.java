@@ -31,6 +31,11 @@ public class LicenseController {
         return licenseService.findOneLicense(id);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value="{id}/{type}")
+    public License getLicenseBysoftAndType(@PathVariable int id,@PathVariable int type){
+        return licenseService.findOneLicenseBysoftAndType(id,type);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public License addLicense(@RequestBody License license){
         return licenseService.newLicense(license);

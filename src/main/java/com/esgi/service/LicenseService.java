@@ -22,4 +22,6 @@ public interface LicenseService {
     License newLicense(License license);
 
     License updateLicense(License license);
+
+    License findOneLicenseBysoftAndType(int id, int type);
 }

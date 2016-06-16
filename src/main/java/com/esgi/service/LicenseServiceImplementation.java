@@ -55,4 +55,9 @@ public class LicenseServiceImplementation implements LicenseService {
         license1.setTypeLicense(typeLicenseRepository.findOne(license.getTypeLicense().getId()));
         return licenseRepository.save(license1);
     }
+
+    @Override
+    public License findOneLicenseBysoftAndType(int id, int type) {
+        return licenseRepository.getLicenseBysoftAndType(id,type);
+    }
 }

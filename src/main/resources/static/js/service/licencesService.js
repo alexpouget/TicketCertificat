@@ -5,7 +5,7 @@
 angular.module('TicketCertificatApp')
     .factory('Licences', ['$resource',
         function($resource){
-            return $resource('/api/license/:uid', {id:'@id'},
+            return $resource('/api/license/:id/:type', {id:'@id',type:'@type'},
                 {
                     'update': {method: 'PUT'}
                 }

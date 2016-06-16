@@ -3,7 +3,7 @@
     <div id="formaddUser">
         <h3> Ajouter licences</h3>
         <label >Date expiration </label>
-        <input type="datetime-local" name="bdaytime" ng-model="newDate">
+        <input type="date" name="bdaytime" ng-model="newDate">
         <label >Company</label>
         <select ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected"></select><br>
         <label >Computer</label>
