@@ -200,33 +200,34 @@ li:last-child a:hover{
     border-radius: 3px;#f1f1f1;
     text-align: center;
     margin-right: 10px;
-    height: 30px;
+    display:block;
+    overflow:auto;
+    padding-top: 16px;
 }
 
 #formModifierUser label{
     display: inline-block;
     color: black;
 }
-#formModifierUser input{
-    margin-left: 10px;
-}
+
 
 h3{
     color: black;
 }
 
 #formaddUser input[name="uid"]{
-    margin-left: 54px;
+    margin-left: 59px;
 }
 
 
 #formaddUser input[name="email"]{
-    margin-left: 37px;
+    margin-left: 42px;
 }
 
 #formaddUser input[name="password"]{
     height: 32px;
-    width: 180px;
+    width: 197px;
+    margin-left: 7px;
 }
 
 #formModifierUser input[name="uid"]{
@@ -241,4 +242,104 @@ h3{
 #formModifierUser input[name="password"]{
     height: 32px;
     width: 180px;
+}
+
+#formaddCompany #addUser{
+    margin-top: 30px;
+}
+
+
+#formaddCompany label{
+    color: black;
+}
+
+#formaddUser #userName{
+     margin-left: 80px;
+ }
+
+#formaddUser label{
+    color: black;
+}
+
+#formaddUser #selectEntreprise{
+    width: 199px;
+}
+
+.tabModifier{
+     width: 18%;
+ }
+
+.tabCheckBoxSuppr{
+    width: 10%;
+}
+
+#formModifierUser #uidModifComputer{
+    margin-left: 59px;
+}
+
+#formModifierUser #selectEntrerpiseModif{
+    width: 200px;
+}
+
+#tabSoftware{
+    width: 68%!important;
+}
+
+#tabSoftware .tabModifier{
+    width: 22%!important;
+}
+
+#formaddSoftware label,#formModifierSoftware label,#licences label{
+    color: black;
+    display: inline-block;
+}
+
+#formaddSoftware #addSoftware,#formModifierSoftware #modifSoftware{
+    margin-top: 10px;
+}
+
+#licences #selectComputerLicence{
+    margin-left: 110px;
+    width: 205px;
+}
+
+#Licenses #entrepriseAdd{
+    margin-left: 40px;
+}
+
+#Licenses #computer{
+    margin-left: 80px;
+}
+
+#Licenses #licenceType{
+    margin-left: 25px;
+}
+
+#Licenses #software{
+    margin-left: 62px;
+}
+#Licenses select{
+    width: 201px;
+}
+
+#tabGestionUsersManage {
+    width: 48%;
+}
+
+#formModifierUser #passUser{
+    margin-left: 10px;
+    width: 197px;
+}
+
+#formModifierUser #entrepriseUser{
+    width: 201px;
+    margin-left: 2px;
+}
+
+#formaddUser #entrepriseUser{
+    width: 200px;
+}
+
+#licences #selectLicence{
+    width: 207px;
 }

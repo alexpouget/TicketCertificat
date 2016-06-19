@@ -1,6 +1,6 @@
 <div id="utilisateurs" class="contenu">
     <h2> Gestion des Droits pour {{user[0].user.uid}} </h2>
-    <div id="tabGestionUsers">
+    <div id="tabGestionUsersManage">
         <table border="1px" id="tabUtilisateurs" class="tableau">
             <tr>
                 <th>Droit</th>
@@ -13,9 +13,9 @@
         </table>
     </div>
     <div id="formModifierUser">
-        <h3> Ajouter un role</h3>
-        <label >Role : </label>
+        <h3> Ajouter un rôle</h3>
+        <label >Rôle : </label>
         <select ng-options="role as role.name for role in roles track by role.id" ng-model="selected"></select><br>
-        <input type="button" value="Ajouter role" ng-click="valRole()">
+        <input type="button" value="Ajouter rôle" ng-click="valRole()">
     </div>
 </div>

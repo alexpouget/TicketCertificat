@@ -8,8 +8,8 @@
         <input type ="text" name="email" ng-model="newEmail"><br>
         <label >Password : </label>
         <input type ="password" name="password" ng-model="newPassword"><br>
-
-        <select ng-options="company as company.name for company in companys track by company.id" ng-model="selected"></select><br>
+        <label >Entreprise : </label>
+        <select ng-options="company as company.name for company in companys track by company.id" ng-model="selected" id="entrepriseUser"></select><br>
 
         <input type="button" id="addUser" value="Enregistrer ajout" ng-click="add()">
     </div>

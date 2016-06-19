@@ -2,19 +2,19 @@
 <h2>Gestion des licences</h2>
 
 	<label>Selectionner l'entreprise : </label>
-	<select  ng-change="doFilterCompany()" ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected">
+	<select  ng-change="doFilterCompany()" ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected" id="selectLicence">
 		<option value="">choisissez une entreprise</option>
 	</select><br>
 	<label>Ordinateur : </label>
-	<input type ="text" name="computer" ng-model="computer" ng-change="doFilterComputer()"><br>
+	<input type ="text" name="computer" ng-model="computer" ng-change="doFilterComputer()" id="selectComputerLicence"><br>
 	<!--<input type="button" value="Filtrer" ng-click="filterComputer()">-->
 	<table border="1px" id="tabLicences" class="tableau">
 		<tr>
 			<th>Type</th>
 			<th>Date d'expiration</th>
-			<th>Computer</th>
-			<th>Company</th>
-			<th>Software Name</th>
+			<th>Poste</th>
+			<th>Entreprise</th>
+			<th>Nom logiciel</th>
 			<th> </th>
 		</tr>
 		<tr ng-repeat="licence in licences">
