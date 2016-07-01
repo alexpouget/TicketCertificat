@@ -1,6 +1,6 @@
 // Contrôleur de la page licences
-TicketCertificatApp.controller('computer', ['$scope','$location','$routeParams','Computer',
-    function($scope,$location,$routeParams,Computer){
+TicketCertificatApp.controller('computer', ['$scope','$route','$location','$routeParams','Computer',
+    function($scope,$route,$location,$routeParams,Computer){
 
 		//init var
 		$scope.computers = Computer.query();
@@ -9,17 +9,23 @@ TicketCertificatApp.controller('computer', ['$scope','$location','$routeParams',
 
 
 		$scope.addToDelete = function(u){
-			if($scope.computerToDelete==null || !$scope.computerToDelete.contains(u)) {
-				$scope.computerToDelete.push(u);
-			}else{
-				$scope.computerToDelete.filter(removeToDelete,u);
-				console.log($scope.computerToDelete);
+			var flag = false;
+			for (var item in $scope.computerToDelete){
+				console.log($scope.computerToDelete[item].uid);
+				if ($scope.computerToDelete[item].uid == u.uid){
+					$scope.computerToDeletefilter = [];
+					for (var i in $scope.computerToDelete){
+						if(i!=item){
+							$scope.computerToDeletefilter.push($scope.computerToDelete[i]);
+						}
+					}
+					$scope.computerToDelete = $scope.computerToDeletefilter
+					flag = true;
+				}
 			}
-		}
-
-		function removeToDelete(element,element2) {
-			console.log(element2);
-			return element != element2;
+			if (flag == false) {
+				$scope.computerToDelete.push(u);
+			}
 		}
 
 		$scope.delete = function(){
@@ -27,11 +33,11 @@ TicketCertificatApp.controller('computer', ['$scope','$location','$routeParams',
 			console.log($scope.computerToDelete);
 			for(var u in $scope.computerToDelete) {
 				console.log("delete : "+$scope.computerToDelete[u]);
-				$scope.computerToDelete[u].$delete();
+				$scope.computerToDelete[u].$delete(function () {
+					$route.reload();
+				});
 			}
-			$route.reload();
 		}
-
 
 		$scope.modifier = function(e){
 			$location.path("/computer/modifier/"+e.id);

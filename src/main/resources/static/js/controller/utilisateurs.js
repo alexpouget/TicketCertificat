@@ -12,28 +12,36 @@ TicketCertificatApp.controller('utilisateurs', ['$scope','User','$location','$ro
 
 
         $scope.addToDelete = function(u){
-
-            if(userToDelete==null || !userToDelete.contains(u)) {
+            var flag = false;
+            for (var item in $scope.userToDelete){
+                console.log($scope.userToDelete[item].uid);
+                if ($scope.userToDelete[item].uid == u.uid){
+                    $scope.userToDeletefilter = [];
+                    for (var i in $scope.userToDelete){
+                        if(i!=item){
+                            $scope.userToDeletefilter.push($scope.userToDelete[i]);
+                        }
+                    }
+                    $scope.userToDelete = $scope.userToDeletefilter
+                    flag = true;
+                }
+            }
+            if (flag == false) {
                 $scope.userToDelete.push(u);
-            }else{
-                $scope.userToDelete.filter(removeToDelete,u);
-                console.log($scope.userToDelete);
             }
         }
 
-        function removeToDelete(element,element2) {
-            console.log(element2);
-            return element != element2;
-        }
 
         $scope.delete = function(){
             console.log("delete : ");
-            console.log($scope.userToDelete);
+            console.log(JSON.stringify($scope.userToDelete));
             for(var u in $scope.userToDelete) {
                 console.log("delete : "+$scope.userToDelete[u]);
-                $scope.userToDelete[u].$delete();
+                $scope.userToDelete[u].$delete(function () {
+                    console.log("reload");
+                    $route.reload();
+                });
             }
-            $route.reload();
         }
 
 

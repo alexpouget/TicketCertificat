@@ -1,6 +1,6 @@
 // Contrôleur de la page licences
-TicketCertificatApp.controller('software', ['$scope','$location','$routeParams','Software',
-    function($scope,$location,$routeParams,Software){
+TicketCertificatApp.controller('software', ['$scope','$route','$location','$routeParams','Software',
+    function($scope,$route,$location,$routeParams,Software){
 
 		//init var
 		$scope.softwares = Software.query();
@@ -9,28 +9,35 @@ TicketCertificatApp.controller('software', ['$scope','$location','$routeParams',
 
 
 		$scope.addToDelete = function(u){
-
-			if($scope.softwareToDelete==null || !$scope.softwareToDelete.contains(u)) {
+			var flag = false;
+			for (var item in $scope.softwareToDelete){
+				console.log($scope.softwareToDelete[item].uid);
+				if ($scope.softwareToDelete[item].uid == u.uid){
+					$scope.softwareToDeletefilter = [];
+					for (var i in $scope.softwareToDelete){
+						if(i!=item){
+							$scope.softwareToDeletefilter.push($scope.softwareToDelete[i]);
+						}
+					}
+					$scope.softwareToDelete = $scope.softwareToDeletefilter
+					flag = true;
+				}
+			}
+			if (flag == false) {
 				$scope.softwareToDelete.push(u);
-			}else{
-				$scope.softwareToDelete.filter(removeToDelete,u);
-				console.log($scope.softwareToDelete);
 			}
 		}
 
-		function removeToDelete(element,element2) {
-			console.log(element2);
-			return element != element2;
-		}
 
 		$scope.delete = function(){
 			console.log("delete : ");
-			console.log($scope.softwareToDelete);
+			console.log(JSON.stringify($scope.softwareToDelete));
 			for(var u in $scope.softwareToDelete) {
 				console.log("delete : "+$scope.softwareToDelete[u]);
-				$scope.softwareToDelete[u].$delete();
+				$scope.softwareToDelete[u].$delete(function () {
+					$route.reload();
+				});
 			}
-			$route.reload();
 		}
 
 

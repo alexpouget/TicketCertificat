@@ -1,26 +1,30 @@
 // Contrôleur de la page licences
-TicketCertificatApp.controller('entreprise', ['$scope','$location','$routeParams','Company',
-    function($scope,$location,$routeParams,Company){
+TicketCertificatApp.controller('entreprise', ['$scope','$route','$location','$routeParams','Company',
+    function($scope,$route,$location,$routeParams,Company){
 
 		//init var
 		$scope.entreprises = Company.query();
 		$scope.couldDelete = false;
 		$scope.companyToDelete = [];
 
-
 		$scope.addToDelete = function(u){
-
-			if(companyToDelete==null || !companyToDelete.contains(u)) {
-				$scope.companyToDelete.push(u);
-			}else{
-				$scope.companyToDelete.filter(removeToDelete,u);
-				console.log($scope.companyToDelete);
+			var flag = false;
+			for (var item in $scope.companyToDelete){
+				console.log($scope.companyToDelete[item].uid);
+				if ($scope.companyToDelete[item].uid == u.uid){
+					$scope.companyToDeletefilter = [];
+					for (var i in $scope.companyToDelete){
+						if(i!=item){
+							$scope.companyToDeletefilter.push($scope.companyToDelete[i]);
+						}
+					}
+					$scope.companyToDelete = $scope.companyToDeletefilter
+					flag = true;
+				}
 			}
-		}
-
-		function removeToDelete(element,element2) {
-			console.log(element2);
-			return element != element2;
+			if (flag == false) {
+				$scope.companyToDelete.push(u);
+			}
 		}
 
 		$scope.delete = function(){
@@ -28,10 +32,12 @@ TicketCertificatApp.controller('entreprise', ['$scope','$location','$routeParams
 			console.log($scope.companyToDelete);
 			for(var u in $scope.companyToDelete) {
 				console.log("delete : "+$scope.companyToDelete[u]);
-				$scope.companyToDelete[u].$delete();
+				$scope.companyToDelete[u].$delete(function () {
+					$route.reload();
+				});
 			}
-			$route.reload();
 		}
+
 
 
 		$scope.modifier = function(e){

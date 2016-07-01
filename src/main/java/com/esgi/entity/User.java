@@ -1,8 +1,11 @@
 package com.esgi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by alex on 29/05/2016.
@@ -80,4 +83,7 @@ public class User implements Serializable {
     @JoinColumn(name = "id_company")
     private Company company;
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="user")
+    private Set<UserRole> userRoles;
 }

@@ -1,8 +1,11 @@
 package com.esgi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by alex on 29/05/2016.
@@ -55,4 +58,8 @@ public class License implements Serializable {
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name = "id_software")
     private Software software;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="license")
+    private Set<LicenseOwner> licenseOwners;
 }

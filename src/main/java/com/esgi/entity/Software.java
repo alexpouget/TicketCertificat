@@ -1,8 +1,11 @@
 package com.esgi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 /**
  * Created by alex on 29/05/2016.
@@ -42,5 +45,8 @@ public class Software implements Serializable {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="software")
+    private Set<License> licenses;
 
 }
