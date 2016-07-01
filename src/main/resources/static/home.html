@@ -58,13 +58,13 @@
                          <li ng-show="admin" id="computer"><a href="#/computer">Postes</a></li>
                          <li ng-show="admin" id="software"><a href="#/software">Logiciels</a></li>
                          <li ng-show="admin" id="licences"><a href="#/licences">Licences</a></li>
-                         <li  ng-show="admin" id="licence" ng-click="goLicences()"><a > Mes Licences</a></li>
+                         <li  ng-show="user" id="licence" ng-click="goLicences()"><a > Mes Licences</a></li>
                          <li ng-show="admin" id="utilisateurs"><a href="#/utilisateurs">Utilisateurs</a></li>
                          <li ng-show="authenticated" id="seDeconnecter"><a href="" ng-click="logout()">Se Deconnecter</a></li>
                     </ul>
                 </nav>
              </div>
-             <div id="connectedAs">
+             <div id="connectedAs" ng-show="session.username">
              <label>Connecté en tant que {{session.username}}</label>
              </div>
              <div ng-view>

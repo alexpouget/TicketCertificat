@@ -226,6 +226,12 @@ TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope','$location',
                 }
             }
         });
+        $rootScope.$on('event:logoutRequest', function () {
+            $scope.admin = false;
+            $scope.comptable = false;
+            $scope.user = false;
+            $scope.session = {};
+        });
 
         $scope.goLicences = function(){
             $location.path("/licences/"+$scope.session.user.id);
