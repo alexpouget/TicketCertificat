@@ -33,8 +33,9 @@ public class JobConfig {
         CronTriggerFactoryBean ctFactory = new CronTriggerFactoryBean();
         ctFactory.setJobDetail(moduleJob());
         ctFactory.isSingleton();
-        //ctFactory.setCronExpression("0 30 23 ? * 5");
-        ctFactory.setCronExpression("0 51 14 ? * 3");
+        //tous les jeudi a 23h30
+        ctFactory.setCronExpression("0 30 23 ? * 5");
+
         return ctFactory;
 
     }
