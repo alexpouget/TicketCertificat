@@ -33,9 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * Created by alex on 02/07/2016.
@@ -56,7 +54,17 @@ public class MyTask extends QuartzJobBean{
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
+        DateFormat compareFormat = new SimpleDateFormat("yyyy-dd-MM");
+        Calendar date15 = Calendar.getInstance();
+        date15.add(Calendar.DATE , 15);
         List<LicenseOwner> licenseOwnerList = licenseOwnerService.findAllLicenseOwner();
+        List<LicenseOwner> licenseOwnerListfiltered = new ArrayList<>();
+        for (LicenseOwner l:licenseOwnerList){
+            if (compareFormat.format(date).compareTo(l.getDateExpiration()) <= 0 && compareFormat.format(date15.getTime()).compareTo(l.getDateExpiration()) >= 0 ) {
+                licenseOwnerListfiltered.add(l);
+            }
+        }
+        licenseOwnerList = licenseOwnerListfiltered;
         String filename = "rapport_expiration_"+dateFormat.format(date);
         File file = new File("ressource/"+filename+".csv");
         file.getParentFile().mkdirs();
