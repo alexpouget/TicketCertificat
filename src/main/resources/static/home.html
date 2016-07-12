@@ -32,6 +32,8 @@
         <script src="/js/controller/ajouterSoftware.js" type="text/javascript"></script>
         <script src="/js/controller/software.js" type="text/javascript"></script>
         <script src="/js/controller/ajouterLicenses.js" type="text/javascript"></script>
+        <script src="/js/controller/renouvelerLicences.js" type="text/javascript"></script>
+        <script src="/js/controller/compte.js" type="text/javascript"></script>
 		<!-- Service-->
         <script src="/js/service/userService.js" type="text/javascript"></script>
         <script src="/js/service/connexionService.js" type="text/javascript"></script>
@@ -60,6 +62,7 @@
                          <li ng-show="admin" id="licences"><a href="#/licences">Licences</a></li>
                          <li  ng-show="user || comptable" id="licence" ng-click="goLicences()"><a > Mes Licences</a></li>
                          <li ng-show="admin" id="utilisateurs"><a href="#/utilisateurs">Utilisateurs</a></li>
+                         <li ng-show="authenticated" id="monCompte"><a href="" ng-click="compte()" >Mon Compte</a></li>
                          <li ng-show="authenticated" id="seDeconnecter"><a href="" ng-click="logout()">Se Deconnecter</a></li>
                     </ul>
                 </nav>

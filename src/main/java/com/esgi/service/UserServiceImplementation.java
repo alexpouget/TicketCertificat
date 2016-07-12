@@ -54,9 +54,14 @@ public class UserServiceImplementation implements UserService {
 
     public User updateUser(User user) {
         User user1 = new User();
+        User user2 = userRepository.findUserByUid(user.getUid());
         user1.setId(user.getId());
         user1.setUid(user.getUid());
-        user1.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        if(user.getPassword().equals(user2.getPassword())){
+            user1.setPassword(user2.getPassword());
+        }else {
+            user1.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
+        }
         user1.setEmail(user.getEmail());
         user1.setCompany(user.getCompany());
         user1 = userRepository.save(user1);

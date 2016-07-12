@@ -13,25 +13,6 @@ TicketCertificatApp.controller('ajouterLicenses', ['$scope','$location','Company
         $scope.types = Typelicenses.query();
         $scope.result = null;
 
-        /*function find(softwareSelected, typeSelected) {
-            $scope.result = null;
-            $scope.licences = Licences.query(function(data){
-                console.log("merdier");
-                console.log(JSON.stringify(data));
-                for(var d in data) {
-                    console.log("merde");
-                    console.log(JSON.stringify(data[d]));
-                    if(data[d].software != null &&  data[d].software.id==softwareSelected.id){
-                        console.log("passe1");
-                        if(data[d].typeLicense.id==typeSelected.id){
-                            console.log("passe2");
-                            $scope.result = data[d];
-                            console.log($scope.result);
-                        }
-                    }
-                }
-            });
-        }*/
 
         function create(softwareSelected, typeSelected) {
             console.log("create");
@@ -77,6 +58,21 @@ TicketCertificatApp.controller('ajouterLicenses', ['$scope','$location','Company
             });
 
 
+        }
+
+        $scope.setCompany = function() {
+            $scope.companySelected = $scope.computerSelected.company
+        }
+        $scope.filterComputer = function() {
+            $scope.computersFiltered = [];
+            $scope.computers = Computer.query(function(data){
+                for (var i in data){
+                    if(data[i].company.id == $scope.companySelected.id){
+                        $scope.computersFiltered.push(data[i]);
+                    }
+                }
+            });
+            $scope.computers = $scope.computersFiltered;
         }
     }
 ]);

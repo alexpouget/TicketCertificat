@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by alex on 29/05/2016.
@@ -60,6 +60,6 @@ public class Computer implements Serializable {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy="computer")
-    private Set<LicenseOwner> licenseOwners;
+    private List<LicenseOwner> licenseOwners;
 
 }

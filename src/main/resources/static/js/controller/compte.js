@@ -2,7 +2,7 @@
  * Created by bmichau on 04/06/2016.
  */
 // Contrôleur de la page utilisateurs
-TicketCertificatApp.controller('modifierUtilisateurs', ['$scope','User','$location',
+TicketCertificatApp.controller('compte', ['$scope','User','$location',
                                                         '$routeParams','Company',
     function($scope,User,$location,$routeParams,Company){
 
@@ -13,7 +13,7 @@ TicketCertificatApp.controller('modifierUtilisateurs', ['$scope','User','$locati
         $scope.companys = Company.query();
         var uid = $routeParams.id;
         $scope.user = User.get({uid:uid}, function (data) {
-            console.log(data);
+            console.log(JSON.stringify(data));
             $scope.password = data.password;
             $scope.uid = data.uid;
             $scope.email = data.email;
@@ -23,15 +23,15 @@ TicketCertificatApp.controller('modifierUtilisateurs', ['$scope','User','$locati
         $scope.valModifier = function () {
             var u = new User();
             u.id = $scope.user.id;
-            u.uid = $scope.uid;
-            u.password = $scope.user.password;
+            u.uid = $scope.user.uid;
+            u.password = $scope.password;
             u.email = $scope.email;
-            u.company = $scope.selected;
+            if($scope.user.company != undefined) {
+                u.company = $scope.user.company
+            }
             u.$update(function() {
-                $location.path("/utilisateurs");
+                $location.path("/");
             });
         }
-
-
     }
 ]);

@@ -1,10 +1,12 @@
 <div id="licences" class ="contenu">
 <h2>Gestion des licences</h2>
 
+	<div ng-show="admin">
 	<label>Selectionner l'entreprise : </label>
 	<select  ng-change="doFilterCompany()" ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected" id="selectLicence">
 		<option value="">choisissez une entreprise</option>
 	</select><br>
+	</div>
 	<label>Ordinateur : </label>
 	<input type ="text" name="computer" ng-model="computer" ng-change="doFilterComputer()" id="selectComputerLicence"><br>
 	<!--<input type="button" value="Filtrer" ng-click="filterComputer()">-->
@@ -23,8 +25,9 @@
 			<td>{{licence.computer.name}}</td>
 			<td>{{licence.company.name}}</td>
 			<td>{{licence.license.software.name}}</td>
-			<td><input type="button" id="renouvellerLicence" value="Renouveller"/></td>
+			<td><input type="button" id="renouvellerLicence" value="Renouveller" ng-click="renouveler(licence.id)"/></td>
 		</tr>
 	</table>
 	<input ng-show="admin" type="button" id="ajouterLicence" value="Ajouter Licence" ng-click="activeAdd()">
+	<input ng-show="admin" type="button" id="export" value="Export" ng-click="exportCsv()">
 </div>

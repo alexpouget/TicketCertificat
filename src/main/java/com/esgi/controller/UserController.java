@@ -56,8 +56,8 @@ public class UserController {
         return userService.newUser(user);
     }
 
-    @RequestMapping(value="/api/user/{id}",method = RequestMethod.PUT)
-    public User updateUsers(@PathVariable int id,@RequestBody User user){
+    @RequestMapping(value="/api/user/{uid}",method = RequestMethod.PUT)
+    public User updateUsers(@PathVariable String uid,@RequestBody User user){
         return userService.updateUser(user);
     }
 

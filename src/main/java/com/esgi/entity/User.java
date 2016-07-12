@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created by alex on 29/05/2016.
@@ -85,5 +85,5 @@ public class User implements Serializable {
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy="user")
-    private Set<UserRole> userRoles;
+    private List<UserRole> userRoles;
 }

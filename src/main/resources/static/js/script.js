@@ -79,6 +79,10 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 templateUrl: 'views/licences.html',
                 controller: 'licences'
             })
+            .when('/licences/renouveller/:id', {
+                templateUrl: 'views/Renouvelerlicences.html',
+                controller: 'renouvelerLicences'
+            })
             .when('/utilisateurs/modifier/:id', {
             templateUrl: 'views/modifierUtilisateur.html',
             controller: 'modifierUtilisateurs'
@@ -91,7 +95,10 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 templateUrl: 'views/droitUtilisateur.html',
                 controller: 'droitUtilisateurs'
             })
-
+            .when('/compte/:id', {
+                templateUrl: 'views/compte.html',
+                controller: 'compte'
+            })
             .when('/utilisateurs', {
                 templateUrl: 'views/utilisateurs.html',
                 controller: 'utilisateurs'
@@ -234,10 +241,11 @@ TicketCertificatApp.controller('homeCtrl', ['$scope','$rootScope','$location',
         });
 
         $scope.goLicences = function(){
-            $location.path("/licences/"+$scope.session.user.id);
+            $location.path("/licences/"+$scope.session.user.company.id);
         }
-
-
+        $scope.compte = function(){
+            $location.path("/compte/"+$scope.session.user.uid);
+        }
 
     $scope.logout = function(){
         $rootScope.$emit('event:logoutRequest');

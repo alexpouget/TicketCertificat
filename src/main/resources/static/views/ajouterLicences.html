@@ -5,9 +5,9 @@
         <label >Date expiration : </label>
         <input type="date" name="bdaytime" ng-model="newDate"><br>
         <label >Entreprise : </label>
-        <select ng-options="company as company.name for company in companys track by company.id" ng-model="companySelected" id="entrepriseAdd"></select><br>
+        <select ng-options="company as company.name for company in companys track by company.id" ng-change="filterComputer()" ng-model="companySelected" id="entrepriseAdd"></select><br>
         <label >Poste : </label>
-        <select ng-options="computer as computer.name for computer in computers track by computer.id" ng-model="computerSelected" id="computer"></select><br>
+        <select ng-options="computer as computer.name for computer in computers track by computer.id" ng-change="setCompany()" ng-model="computerSelected" id="computer"></select><br>
         <label >Type licence : </label>
         <select ng-options="type as type.type for type in types track by type.id" ng-model="typeSelected" id="licenceType"></select><br>
         <label >Logiciel : </label>
