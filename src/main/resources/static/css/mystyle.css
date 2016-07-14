@@ -343,3 +343,44 @@ h3{
 #licences #selectLicence{
     width: 207px;
 }
+
+#formModifierLicences label, #formModifierLicences input[name="bdaytime"]{
+    display: inline-block;
+    color: black;
+}
+
+#formModifierLicences #renouvLicenceEntreprise,#formModifierLicences #renouvLicencePoste,
+#formModifierLicences #renouvLicenceTypeL,#formModifierLicences #renouvLicenceLic{
+    display: inline-block;
+    color: rgb(241, 241, 241);
+    font-weight: bold;
+}
+
+#formModifierLicences #renouvLicenceEntreprise{
+     margin-left: 42px;
+ }
+
+#formModifierLicences #renouvLicencePoste{
+    margin-left: 80px;
+}
+
+#formModifierLicences #renouvLicenceTypeL{
+    margin-left: 26px;
+}
+
+#formModifierLicences #renouvLicenceLic{
+    margin-left: 64px;
+}
+
+#formModifierUser input[name="password"]{
+    margin-left: 10px;
+}
+
+#formModifierUser #uidMofifUser{
+    margin-left: 59px;
+    display: inline-block;
+    color: rgb(241, 241, 241);
+    font-weight: bold;
+}
+}
+
