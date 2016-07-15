@@ -36,6 +36,7 @@ public class JobConfig {
         //tous les jeudi a 23h30
         ctFactory.setCronExpression("0 30 23 ? * 5");
 
+
         return ctFactory;
 
     }

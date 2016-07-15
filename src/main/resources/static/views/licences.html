@@ -17,7 +17,7 @@
 			<th>Poste</th>
 			<th>Entreprise</th>
 			<th>Nom logiciel</th>
-			<th> </th>
+			<th ng-show="admin" > </th>
 		</tr>
 		<tr ng-repeat="licence in licences">
 			<td>{{licence.license.typeLicense.type}}</td>
@@ -25,9 +25,9 @@
 			<td>{{licence.computer.name}}</td>
 			<td>{{licence.company.name}}</td>
 			<td>{{licence.license.software.name}}</td>
-			<td><input type="button" id="renouvellerLicence" value="Renouveller" ng-click="renouveler(licence.id)"/></td>
+			<td ng-show="admin" ><input type="button" id="renouvellerLicence" value="Renouveller" ng-click="renouveler(licence.id)"/></td>
 		</tr>
 	</table>
 	<input ng-show="admin" type="button" id="ajouterLicence" value="Ajouter Licence" ng-click="activeAdd()">
-	<input ng-show="admin" type="button" id="export" value="Export" ng-click="exportCsv()">
+	<input ng-show="admin || comptable" type="button" id="export" value="Export" ng-click="exportCsv()">
 </div>

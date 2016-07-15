@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Dim 12 Juin 2016 à 22:29
+-- Généré le :  Mer 13 Juillet 2016 à 20:13
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -13,6 +13,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `Ticket_certificat`
 --
+CREATE DATABASE IF NOT EXISTS `Ticket_certificat` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `Ticket_certificat`;
 
 -- --------------------------------------------------------
 
@@ -24,14 +26,15 @@ CREATE TABLE `company` (
   `id` int(11) NOT NULL,
   `name` varchar(128) DEFAULT NULL,
   `adress` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `company`
 --
 
 INSERT INTO `company` (`id`, `name`, `adress`) VALUES
-(1, 'Michax Company', '168 route de nangis');
+(1, 'Michax Company', '168 route de nangizer'),
+(2, 'Pouget computer', '18 rue du pommier 93700');
 
 -- --------------------------------------------------------
 
@@ -43,14 +46,15 @@ CREATE TABLE `computer` (
   `id` int(11) NOT NULL,
   `name` varchar(256) DEFAULT NULL,
   `id_company` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `computer`
 --
 
 INSERT INTO `computer` (`id`, `name`, `id_company`) VALUES
-(1, 'PC4567W', 1);
+(1, 'PC4567W', 1),
+(2, 'PC456W', 2);
 
 -- --------------------------------------------------------
 
@@ -62,14 +66,16 @@ CREATE TABLE `license` (
   `id` int(11) NOT NULL,
   `type_license` int(11) DEFAULT NULL,
   `id_software` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `license`
 --
 
 INSERT INTO `license` (`id`, `type_license`, `id_software`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(10, 1, 2),
+(14, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -79,19 +85,22 @@ INSERT INTO `license` (`id`, `type_license`, `id_software`) VALUES
 
 CREATE TABLE `license_owner` (
   `id` int(11) NOT NULL,
-  `date_debut` datetime DEFAULT NULL,
-  `date_expiration` datetime DEFAULT NULL,
+  `date_debut` varchar(256) DEFAULT NULL,
+  `date_expiration` varchar(256) DEFAULT NULL,
   `id_computer` int(11) DEFAULT NULL,
   `id_company` int(11) DEFAULT NULL,
   `id_license` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `license_owner`
 --
 
 INSERT INTO `license_owner` (`id`, `date_debut`, `date_expiration`, `id_computer`, `id_company`, `id_license`) VALUES
-(1, '2016-06-12 00:00:00', '2016-07-22 00:00:00', 1, 1, 1);
+(1, '2016-06-12', '2016-23-07', 1, 1, 1),
+(2, '2016-05-04', '2016-05-06', 1, 1, 1),
+(3, '2016-05-04', '2017-01-07 ', 2, 2, 1),
+(4, '2016-05-04', '2016-05-04', 2, 1, 14);
 
 -- --------------------------------------------------------
 
@@ -122,14 +131,15 @@ INSERT INTO `role` (`id`, `name`) VALUES
 CREATE TABLE `software` (
   `id` int(11) NOT NULL,
   `name` varchar(128) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `software`
 --
 
 INSERT INTO `software` (`id`, `name`) VALUES
-(1, 'Office');
+(1, 'Office'),
+(2, 'Chromex');
 
 -- --------------------------------------------------------
 
@@ -162,15 +172,17 @@ CREATE TABLE `user` (
   `email` varchar(256) DEFAULT NULL,
   `password` varchar(256) DEFAULT NULL,
   `id_company` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `uid`, `email`, `password`, `id_company`) VALUES
-(1, '997244', 'pouget@gmail.com', '$2a$04$16/UikoINtqcBCdvyZN6tebTeabJC9VHipGvZ8Fi8HCRVy9VeBlFO', 1),
-(6, '222222', 'pazpaz@gma.com', '$2a$10$aX.oJhZR9WJh9dHJsSLRxuwftBlxA2F8owhWFesaf.1PvJXqNwLHK', NULL);
+(1, '997244', 'pouget.al@gmail.com', '$2a$10$7/.gMiDDJG5oeyng1Y2M4.2lsIRgJ9lRugcqpirSFVvRFa0B7wCqS', NULL),
+(7, 'GZAA', 'gabriel.zaafrani@gmail.com', '$2a$10$nz88rOZ4XoXYAa/093.VneFpIaCn3kEcwkhI/f.Fv.prZBMWYMPAu', 1),
+(19, 'kk', 'kk@jmail.com', '$2a$10$TsLCTaKOLGq32pjhQGKC2.fM5o5wXphJfL.6ibtI7GlYvWXEBqAUC', 2),
+(20, 'PP', 'pp@gmail.com', '$2a$10$a4YEeuPc2v3Ri.9vqu84buzUKCtxQVywA8xOWYBJ4qxLM3DIX3xtu', 2);
 
 -- --------------------------------------------------------
 
@@ -182,7 +194,7 @@ CREATE TABLE `user_role` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_role` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `user_role`
@@ -190,7 +202,9 @@ CREATE TABLE `user_role` (
 
 INSERT INTO `user_role` (`id`, `id_user`, `id_role`) VALUES
 (1, 1, 1),
-(7, 6, 3);
+(8, 7, 3),
+(20, 19, 3),
+(21, 20, 3);
 
 --
 -- Index pour les tables exportées
@@ -267,22 +281,22 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT pour la table `company`
 --
 ALTER TABLE `company`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `computer`
 --
 ALTER TABLE `computer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `license`
 --
 ALTER TABLE `license`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT pour la table `license_owner`
 --
 ALTER TABLE `license_owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `role`
 --
@@ -292,7 +306,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `software`
 --
 ALTER TABLE `software`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `type_license`
 --
@@ -302,12 +316,12 @@ ALTER TABLE `type_license`
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT pour la table `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- Contraintes pour les tables exportées
 --

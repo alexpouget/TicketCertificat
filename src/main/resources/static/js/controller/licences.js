@@ -87,6 +87,7 @@ TicketCertificatApp.controller('licences', ['$scope','$routeParams','$location',
 		}
 
 		$scope.renouveler = function(id){
+			console.log("renouveler : "+id);
 			$location.path("/licences/renouveller/"+id);
 
 		}

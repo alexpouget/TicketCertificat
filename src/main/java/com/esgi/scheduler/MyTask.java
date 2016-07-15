@@ -129,7 +129,7 @@ public class MyTask extends QuartzJobBean{
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-        file.delete();
+       // file.delete();
     }
 
     public static String SendMail(String to[], String from, String subject, String message, String hostSmtp

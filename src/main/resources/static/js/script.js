@@ -80,7 +80,7 @@ TicketCertificatApp.config(['$routeProvider','$httpProvider',
                 controller: 'licences'
             })
             .when('/licences/renouveller/:id', {
-                templateUrl: 'views/Renouvelerlicences.html',
+                templateUrl: 'views/renouvelerLicences.html',
                 controller: 'renouvelerLicences'
             })
             .when('/utilisateurs/modifier/:id', {
