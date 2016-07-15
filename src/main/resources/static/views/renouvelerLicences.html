@@ -1,0 +1,19 @@
+<div id="utilisateurs" class="contenu">
+    <h2> Renouvellement de la licence</h2>
+    <div id="formModifierLicences">
+        <h3> Renouveller licences</h3>
+        <label ng-show="error" style="color: red">erreur veuillez selectionner une date valide</label>
+        <label >Date expiration : </label>
+        <input type="date" name="bdaytime" ng-model="newDate"><br>
+        <label >Entreprise : </label>
+        <div id="renouvLicenceEntreprise">{{licence.company.name}}</div>
+        <br><label >Poste : </label>
+        <div id="renouvLicencePoste">{{licence.computer.name}}</div>
+        <br><label >Type licence : </label>
+        <div id="renouvLicenceTypeL">{{licence.license.typeLicense.type}}</div>
+        <br><label >Logiciel : </label>
+        <div id="renouvLicenceLic">{{licence.license.software.name}}</div>
+
+        <br><input type="button" value="Enregistrer modification" ng-click="valModifier()">
+    </div>
+</div>

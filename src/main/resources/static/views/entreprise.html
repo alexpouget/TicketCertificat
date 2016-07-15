@@ -1,0 +1,20 @@
+
+<div id="entreprise" class ="contenu">
+<h2>Gestion des entreprises</h2>
+	<table border="1px" id="tabEntreprises" class="tableau">
+		<tr>
+			<th>Entreprise</th>
+			<th>Adresse</th>
+			<th class="tabModifier"> </th>
+			<th class="tabCheckBoxSuppr"> </th>
+		</tr>
+		<tr ng-repeat="entreprise in entreprises">
+			<td>{{entreprise.name}}</td>
+			<td>{{entreprise.adress}}</td>
+			<td><input type="button" value="modifier" ng-click="modifier(entreprise)"/></td>
+			<td><input type="checkbox" ng-click="addToDelete(entreprise)" /></td>
+		</tr>
+	</table>
+	<input type="button" value="Supprimer" ng-active="couldDelete" ng-click="delete()">
+	<input type="button" value="Ajouter" ng-click="activeAdd()">
+</div>

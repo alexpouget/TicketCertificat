@@ -1,0 +1,12 @@
+<div id="utilisateurs" class="contenu">
+    <h2> Gestion des postes utilisateur </h2>
+    <div id="formaddUser">
+        <h3> Ajouter poste utilisateur</h3>
+        <label >Name : </label>
+        <input type ="text" name="name" ng-model="newName" id="userName"><br>
+        <label>Nom entreprise : </label>
+        <select id="selectEntreprise" ng-options="company as company.name for company in companys track by company.id" ng-model="selected"></select><br>
+
+        <input type="button" id="addUser" value="Enregistrer ajout" ng-click="add()">
+    </div>
+</div>

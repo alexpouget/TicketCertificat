@@ -1,0 +1,27 @@
+<div id="utilisateurs" class="contenu">
+    <h2> Gestion des Utilisateurs </h2>
+    <div id="tabGestionUsers">
+        <table border="1px" id="tabUtilisateurs" class="tableau">
+            <tr>
+                <th>UID</th>
+                <th>Email</th>
+                <th>Entreprise </th>
+                <th>Droit </th>
+                <th> </th>
+                <th class="tabCheckBoxSuppr"> </th>
+
+            </tr>
+            <tr ng-repeat="user in users">
+                 <td>{{user.uid}}</td>
+                 <td>{{user.email}}</td>
+                <td>{{user.company.name}}</td>
+                <td><input type="button" value="gerer" ng-click="droit(user)"/></td>
+                 <td><input type="button" value="modifier" ng-click="modifier(user)"/></td>
+                 <td><input type="checkbox" ng-click="addToDelete(user)" /></td>
+             </tr>
+        </table>
+        <input type="button" value="Supprimer" ng-active="couldDelete" ng-click="delete()">
+        <input type="button" value="Ajouter" ng-click="activeAdd()">
+    </div>
+
+</div>

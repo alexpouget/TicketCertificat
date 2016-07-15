@@ -1,0 +1,18 @@
+
+<div id="software" class ="contenu">
+<h2>Gestion des logiciels</h2>
+	<table border="1px" id="tabSoftware" class="tableau">
+		<tr>
+			<th>Nom logiciel</th>
+			<th class="tabModifier"> </th>
+			<th class="tabCheckBoxSuppr"> </th>
+		</tr>
+		<tr ng-repeat="software in softwares">
+			<td>{{software.name}}</td>
+			<td><input type="button" value="modifier" ng-click="modifier(software)"/></td>
+			<td><input type="checkbox" ng-click="addToDelete(software)" /></td>
+		</tr>
+	</table>
+	<input type="button" value="Supprimer" ng-active="couldDelete" ng-click="delete()">
+	<input type="button" value="Ajouter" ng-click="activeAdd()">
+</div>

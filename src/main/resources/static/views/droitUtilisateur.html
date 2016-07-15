@@ -1,0 +1,21 @@
+<div id="utilisateurs" class="contenu">
+    <h2> Gestion des Droits pour {{user[0].user.uid}} </h2>
+    <div id="tabGestionUsersManage">
+        <table border="1px" id="tabUtilisateurs" class="tableau">
+            <tr>
+                <th>Droit</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="u in user">
+                <td>{{u.role.name}}</td>
+                <td><input type="button" value="Delete" ng-click="deleteRole(u)"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="formModifierUser">
+        <h3> Ajouter un rôle</h3>
+        <label >Rôle : </label>
+        <select ng-options="role as role.name for role in roles track by role.id" ng-model="selected"></select><br>
+        <input type="button" value="Ajouter rôle" ng-click="valRole()">
+    </div>
+</div>

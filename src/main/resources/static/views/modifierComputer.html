@@ -1,0 +1,12 @@
+<div id="utilisateurs" class="contenu">
+    <h2> Modification du poste</h2>
+    <div id="formModifierUser">
+        <h3> Modifier le poste</h3>
+        <label >Uid : </label>
+        <input type ="text" name="name" ng-model="computer.name" value="computer.name" id="uidModifComputer"><br>
+        <label>Entreprise : </label>
+        <select ng-options="company as company.name for company in companys track by company.id" ng-model="selected" id="selectEntrerpiseModif"></select><br>
+
+        <input type="button" value="Enregistrer modification" ng-click="valModifier()">
+    </div>
+</div>
